@@ -1,10 +1,17 @@
+package com.rizvi.mit.du.service;
+
+import com.rizvi.mit.du.console.ConsoleIO;
+import com.rizvi.mit.du.board.Board;
+import com.rizvi.mit.du.board.BoardStates;
+import com.rizvi.mit.du.player.Player;
+
 public class GameLogic {
 	private Player firstPlayer;
 	private Player secondPlayer;
 	private Board board;
-	private ConsoleInputOutput userInterface;
+	private ConsoleIO userInterface;
 
-	public GameLogic(ConsoleInputOutput userInterface) {
+	public GameLogic(ConsoleIO userInterface) {
 		this.userInterface = userInterface;
 		board = new Board(this.userInterface);
 		setPlayers();
@@ -22,9 +29,9 @@ public class GameLogic {
 		
 		board.printBoard();
 		if (currentPlayer.isWinner()) {
-			userInterface.showMesssage(currentPlayer.getName() + " is the winner!!");
+			userInterface.showMessage(currentPlayer.getName() + " is the winner!!");
 		} else {
-			userInterface.showMesssage("This game ended up in a draw!!");
+			userInterface.showMessage("This game ended up in a draw!!");
 		}
 
 	}
@@ -33,7 +40,7 @@ public class GameLogic {
 		int move;
 		move = currentPlayer.move(userInterface);
 		while (board.isOccupiedAt(move)) {
-			userInterface.showErrorMesssage("Please enter a valid move!!");
+			userInterface.showErrorMessage("Please enter a valid move!!");
 			move = currentPlayer.move(userInterface);
 		}
 		return move;
@@ -81,10 +88,10 @@ public class GameLogic {
 	}
 
 	private void setPlayers() {
-		userInterface.showMesssage("Enter the first player's name: ");
+		userInterface.showMessage("Enter the first player's name: ");
 		String firstPlayerName = userInterface.takePlayerInputString();
 		firstPlayer = new Player(firstPlayerName,BoardStates.BOARD_STATE_X);
-		userInterface.showMesssage("Enter the second player's name: ");
+		userInterface.showMessage("Enter the second player's name: ");
 		String secondPlayerName = userInterface.takePlayerInputString();
 		secondPlayer = new Player(secondPlayerName,BoardStates.BOARD_STATE_O);
 	}

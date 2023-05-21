@@ -1,3 +1,4 @@
+package com.rizvi.mit.du.board;
 
 public class BoardStates {
 	

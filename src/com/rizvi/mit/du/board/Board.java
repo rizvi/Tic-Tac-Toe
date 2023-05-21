@@ -1,4 +1,9 @@
+package com.rizvi.mit.du.board;
+
+import com.rizvi.mit.du.console.ConsoleIO;
+
 import java.util.Arrays;
+import java.util.Collections;
 
 public class Board {
 	private static final int NUMBER_OF_ROWS = 3;
@@ -7,9 +12,9 @@ public class Board {
 	private static final String BOARD_VERTICAL_BORDER = "|";
 	private static final int BOARD_PADDING_LENGTH = 1;
 	private String[][] boardContents;
-	private ConsoleInputOutput userInterface;
+	private ConsoleIO userInterface;
 
-	public Board(ConsoleInputOutput userInterface) {
+	public Board(ConsoleIO userInterface) {
 		initializeBoard();
 		this.userInterface = userInterface;
 	}
@@ -28,13 +33,13 @@ public class Board {
 		for (int rowIndex = 0; rowIndex < boardContents.length; rowIndex++) {
 			String[] row = boardContents[rowIndex];
 			drawRowWithSeperator(row, " ");
-			userInterface.showMesssage("");
+			userInterface.showMessage("");
 			if (rowIndex == boardContents.length - 1) {
 				drawRowWithSeperator(" ", row);
 			} else {
 				drawRowWithSeperator(BOARD_HORIZONTAL_BORDER, row);
 			}
-			userInterface.showMesssage("");
+			userInterface.showMessage("");
 		}
 	}
 
@@ -56,14 +61,18 @@ public class Board {
 
 	private void draw(String content, String padWith, String seperator) {
 		content = padAround(content, BOARD_PADDING_LENGTH, " ");
-		userInterface.showMesssage(content, false);
-		userInterface.showMesssage(seperator, false);
+		userInterface.showMessage(content, false);
+		userInterface.showMessage(seperator, false);
 		// userInterface.showMesssage(cell, false);
 		// userInterface.showMesssage(BOARD_VERTICAL_BORDER, false);
 	}
 
 	private String padAround(String cell, int length, String padWith) {
-		cell = padWith.repeat(length) + cell + padWith.repeat(length);
+		// Using Java 11
+//		cell = padWith.repeat(length) + cell + padWith.repeat(length);
+		// Using Java 8
+//		cell = padWith.repeat(length) + cell + padWith.repeat(length);
+		cell = String.join("", Collections.nCopies(length, padWith)) + cell + String.join("", Collections.nCopies(length, padWith));
 		return cell;
 	}
 
@@ -84,7 +93,7 @@ public class Board {
 	private boolean isOccupiedAt(int rowIndex, int columnIndex) {
 		if (!isOutOfBound(rowIndex, columnIndex)) {
 			String elementAtIndex = boardContents[rowIndex][columnIndex];
-			// System.err.println(!elementAtIndex.contentEquals(BoardStates.BOARD_STATE_EMPTY));
+			// System.err.println(!elementAtIndex.contentEquals(com.rizvi.mit.du.board.BoardStates.BOARD_STATE_EMPTY));
 			return !elementAtIndex.contentEquals(BoardStates.BOARD_STATE_EMPTY);
 		}
 		return true;

@@ -1,6 +1,8 @@
+package com.rizvi.mit.du.console;
+
 import java.util.Scanner;
 
-public class ConsoleInputOutput {
+public class ConsoleIO {
 
 	public String takePlayerInputString() {
 		Scanner scanner = new Scanner(System.in);
@@ -14,19 +16,19 @@ public class ConsoleInputOutput {
 		return input;
 	}
 
-	public void showMesssage(String message) {
+	public void showMessage(String message) {
 		System.out.println(message);
 	}
 
-	public void showMesssage(String message, boolean newLine) {
+	public void showMessage(String message, boolean newLine) {
 		if (newLine) {
-			showMesssage(message);
+			showMessage(message);
 		} else {
 			System.out.print(message);
 		}
 	}
 
-	public void showErrorMesssage(String message) {
+	public void showErrorMessage(String message) {
 		System.err.println(message);
 	}
 }
