@@ -1,0 +1,18 @@
+# Directories to ignore
+
+/target/
+/test-output/
+/.project
+/.settings
+/.classpath
+/uploadfile.exe
+/uploadfileU.exe
+/uploadfilezz.exe
+bin/
+/doc/
+.metadata/
+.idea
+/.idea/*
+/out/
+/*.iml
+*.iml

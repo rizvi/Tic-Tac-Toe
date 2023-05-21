@@ -1,10 +1,10 @@
+import com.rizvi.mit.du.console.ConsoleIO;
+import com.rizvi.mit.du.service.GameLogic;
 
 public class Driver {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		GameLogic game = new GameLogic(new ConsoleInputOutput());
+		GameLogic game = new GameLogic(new ConsoleIO());
 		game.play();
 	}
-
 }
